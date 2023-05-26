@@ -53,7 +53,34 @@ function Work() {
             <div className="grid place-items-center">
               <ul className="list-none">
 
-                {/* //!  1st Project  */}
+                 {/* //!  1st Project  */}
+                 <div className="mx-1 mb-10">
+                  <li className="mb-1">
+                    <h1 className="mb-1 text-xl tracking-wide font-serif font-semibold">
+                      Admin Dashboard
+                    </h1>
+                    <div className="mt-1">
+                      <ul className="list-disc ml-7">
+                        <li>This webapp can control the data of the website, where Admin can manage the Products, Customers & Sub-Admins.</li>
+                        <li>In this webapp application I implemented Cookies & JWT token for login authorization. </li>
+                        <li>Technology used: <span className="font-medium">MERN Stack & Tailwind CSS</span></li>
+                        <li className="font-medium text-gray-500">
+                          Website link :{" "}
+                          <a
+                            className="text-blue-400 underline"
+                            href="https://admin-dashboard-login.netlify.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Click me
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </div>
+
+                {/* //!  2nd Project  */}
                 <div className="mx-1 mb-10">
                   <li className="mb-1">
                     <h1 className="mb-1 text-xl tracking-wide font-serif font-semibold">
@@ -84,7 +111,7 @@ function Work() {
                   </li>
                 </div>
 
-                {/* //!  2nd Project  */}
+                {/* //!  3rd Project  */}
                 <div className="mx-1 mb-10">
                   <li className="mb-1">
                     <h1 className="mb-1 text-xl tracking-wide font-serif font-semibold">
