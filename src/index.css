@@ -10,11 +10,6 @@
 }
 
 
-::-webkit-scrollbar {
-  width: 0px;
-}
-
-
 /* Home Page... */
 .home {
   background-image: url('/public/images/back-projetos.jpg');

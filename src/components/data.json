@@ -1,0 +1,82 @@
+{
+  "additional_commands": [
+    {
+      "label": "help",
+      "about": "View all commands"
+    },
+    {
+      "label": "clear",
+      "about": "Clear the screen"
+    },
+    {
+      "label": "history",
+      "about": "To know about history"
+    },
+    {
+      "label": "setname",
+      "about": "To replace default 'visitor' name with your name"
+    },
+    {
+      "label": "theme",
+      "about": "To customize theme"
+    }
+  ],
+  "options": [
+    {
+      "label": "about",
+      "about": "To know about me",
+      "value": "Hey there! I'm Shubham Mishra, a software engineer with a passion for crafting innovative digital solutions."
+    },
+    {
+      "label": "skills",
+      "about": "To know about my skills",
+      "value": "I'm a versatile full-stack developer, adept at turning ideas into robust web applications. <br /> <br /> Proficient in HTML5, CSS3, JavaScript, Next.js, React.js, Tailwind CSS, Bootstrap, Node.js, Express.js, SQL, MongoDB, Redis, Redux, Context API, Docker, Jenkins, Slack, GitHub, and Git."
+    },
+    {
+      "label": "experience",
+      "about": "To know about my experience",
+      "value": "I have gained experience working in various roles over the years.",
+      "data": [
+        {
+          "label": "PlutosOne Pvt. Ltd.",
+          "value": "Software Engineer <br /> Oct 2023 - Present"
+        },
+        {
+          "label": "Acxiom Consulting Pvt. Ltd.",
+          "value": "Technical Consultant <br /> April 2023 – Sep 2023"
+        },
+        {
+          "label": "Dodev Technology Pvt. Ltd.",
+          "value": "Full Stack Developer (Intern) <br /> July 2022 - Sep 2022"
+        }
+      ]
+    },
+    {
+      "label": "projects",
+      "about": "To know about my projects",
+      "value": "I've had the pleasure of working on diverse projects that showcase my skills and creativity.",
+      "data": [
+        {
+          "label": "Ecommerce (Website) Using Sentiment Analysis",
+          "value": "Designed and developed a comprehensive e-commerce solution that empowers businesses with advanced sentiment analysis capabilities enhancing customer engagement and product rankings.",
+          "url": "https://dashboard-darkstore.netlify.app"
+        },
+        {
+          "label": "Test Taker",
+          "value": "Innovated and executed the development of a dynamic Test Taker WebApp providing an interactive platform for students to enhance their competitive exam preparation with immediate feedback.",
+          "url": "https://testtaker.netlify.app/"
+        },
+        {
+          "label": "Voice Notes",
+          "value": "Pioneered the creation of a versatile web application allowing users to record voice notes or upload audio files for personal use. And ensured individual access control enabling users to manage their audio content with ease and privacy.",
+          "url": "https://shortmusic.netlify.app/"
+        }
+      ]
+    },
+    {
+      "label": "contact",
+      "about": "To get my contact details",
+      "value": "Feel free to reach out! You can contact me for any inquiries or collaborations. <br/> Email: mishrashubh38@gmail.com <br/> GitHub: https://github.com/buggiebug <br/> LinkedIn: https://www.linkedin.com/in/shubham-mishra"
+    }
+  ]
+}
