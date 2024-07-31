@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+body{
+  background-color: black;
+  overflow-x: hidden;
+}
 
 /* Home Page... */
 .home {

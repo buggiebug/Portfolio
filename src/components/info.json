@@ -77,6 +77,11 @@
       "label": "contact",
       "about": "To get my contact details",
       "value": "Feel free to reach out! You can contact me for any inquiries or collaborations. <br/> Email: mishrashubh38@gmail.com <br/> GitHub: https://github.com/buggiebug <br/> LinkedIn: https://www.linkedin.com/in/shubham-mishra"
+    },
+    {
+      "label": "resume",
+      "about": "To download the resume",
+      "value": "Thanks for downloading my resume :-}"
     }
   ]
 }
