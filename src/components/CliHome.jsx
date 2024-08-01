@@ -34,20 +34,6 @@ const CliHome = () => {
     setUserInput(e.target.value);
   };
 
-  // On Presing Enter...
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setUserInput("");
-    executeCommand(userInput);
-
-    // TODO:  Implement history...
-    setLogHistory([{}])
-    
-    setTimeout(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-    });
-  };
-
   // Execute commands...
   const executeCommand = (command) => {
     // If the command is not setname then extract only 1st word [command] else all the command line text...
@@ -58,6 +44,11 @@ const CliHome = () => {
     }
 
     command = command.trim().toLowerCase();
+
+    if (command === "bug") {
+      // alert("Bhaggg bsdka \n:-{\n:-{\n:-{\n:-{\n:-{\n:-{");
+      console.log(history);
+    }
 
     // If command exists in options //! [to show my data commands]...
     if (options.includes(command)) {
@@ -95,6 +86,8 @@ const CliHome = () => {
         },
       ]);
     } else {
+      const showCommand = userInput.trim();
+
       //  If user presses only enter in the terminal black command...
       if (command === "") {
         setHistory((history) => [
@@ -108,7 +101,7 @@ const CliHome = () => {
       }
 
       // If help command then concant it with old data & display help...
-      if (command === "help") {
+      if (userInput.split(" ").length === 1 && ["help", "ls", "dir"].includes(userInput)) {
         setHistory((history) => [
           ...history,
           {
@@ -145,7 +138,6 @@ const CliHome = () => {
 
       if (command.trim().startsWith("theme")) {
         const commands = userInput.trim().split(" ");
-        const showCommand = userInput.trim();
 
         // If command is less than or equal to 1 & comand is them & show the theme list & command set commands...
         if (commands.length <= 1 && command === commands[0]) {
@@ -209,10 +201,37 @@ const CliHome = () => {
       // If there is no matching commands...
       setHistory((history) => [
         ...history,
-        { command: command, output: "Command not found. <br/>" },
+        { command: showCommand, output: "Command not found. <br/>" },
       ]);
     }
   };
+
+  // On Presing Enter...
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUserInput("");
+    executeCommand(userInput);
+
+    // TODO:  Implement history...
+    setLogHistory([...logHistory, userInput])
+
+    setTimeout(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  };
+
+  const handleArrowKeyPress = ({ key }) => {
+    let lastIndex = history.length - 1;
+    console.log(history[lastIndex])
+    if (key === "ArrowUp") {
+      setUserInput(history[lastIndex].command);
+      lastIndex--;
+    }
+    if (key === "ArrowDown") {
+      setUserInput(history[lastIndex+1].command);
+      lastIndex++;
+    }
+  }
 
   // Auto focus on input box...
   const inputRef = useRef(null);
@@ -236,14 +255,14 @@ const CliHome = () => {
         {
           /* History */
           history &&
-            history?.map((history, idx) => (
-              <div key={idx} className="mb-2 text-command">
-                {/* Show prompt button by default... */}
-                <PromptBar customUserName={customUserName} />
-                <span>{history.command}</span> <br />
-                <span dangerouslySetInnerHTML={{ __html: history.output }} />
-              </div>
-            ))
+          history?.map((history, idx) => (
+            <div key={idx} className="mb-2 text-command">
+              {/* Show prompt button by default... */}
+              <PromptBar customUserName={customUserName} />
+              <span>{history.command}</span> <br />
+              <span dangerouslySetInnerHTML={{ __html: history.output }} />
+            </div>
+          ))
         }
 
         {/* Prompt */}
@@ -259,6 +278,7 @@ const CliHome = () => {
                 autoFocus
                 value={userInput}
                 onChange={handleInputChange}
+                onKeyDown={handleArrowKeyPress}
                 ref={inputRef}
                 autoComplete="off"
               />
