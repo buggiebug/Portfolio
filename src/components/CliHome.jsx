@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PromptBar from "./terminal/PromptBar";
-import { themes } from "./terminal/constants";
+import PromptBar from "./utils/PromptBar";
+import { themes } from "./utils/constants";
 
 // Files...
 import Resume from "./docs/Shubham_Resume.pdf";
@@ -10,7 +10,7 @@ import Ubuntu from "./images/ubuntu.jpg"
 import Kali from "./images/kali.jpg"
 import Arch from "./images/arch.webp"
 
-import info from "./info.json";
+import info from "./utils/info.json";
 const options = info.options.map((option) => option.label);
 
 const CliHome = () => {
@@ -314,18 +314,18 @@ const CliHome = () => {
   useEffect(() => {
     if (["reset", "ubuntu"].includes(currentTheme)) {
       const appHomeId = document.getElementById("home");
-      appHomeId.style.backgroundImage = `url(${Ubuntu})`
-      appHomeId.style.color = `white`
+      appHomeId.style.backgroundImage = `url(${Ubuntu})`;
+      appHomeId.style.color = `white`;
     }
     if (currentTheme === "kali") {
       const appHomeId = document.getElementById("home");
-      appHomeId.style.backgroundImage = `url(${Kali})`
-      appHomeId.style.color = `white`
+      appHomeId.style.backgroundImage = `url(${Kali})`;
+      appHomeId.style.color = `white`;
     }
     if (currentTheme === "arch") {
       const appHomeId = document.getElementById("home");
-      appHomeId.style.backgroundImage = `url(${Arch})`
-      appHomeId.style.color = `gold`
+      appHomeId.style.backgroundImage = `url(${Arch})`;
+      appHomeId.style.color = `gold`;
     }
   }, [currentTheme]);
 

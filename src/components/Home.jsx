@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import bgImage from "./images/bgImage.jpg"
 
 const Home = () => {
+
+  useEffect(() => {
+    const appHomeId = document.getElementById("home");
+    appHomeId.style.backgroundImage = `url(${bgImage})`
+    appHomeId.style.color = `white`
+  }, []);
+
   return (
     <>
       <div className={`flex flex-col h-full justify-center items-center`}>

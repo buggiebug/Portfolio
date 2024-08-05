@@ -1,4 +1,4 @@
-import { username, hostname, path, symbol } from "./constants";
+import { username, hostname, path, symbol } from "../utils/constants";
 
 const Prompt = ({ customUserName }) => {
   return (
