@@ -1,16 +1,24 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PromptBar from "./terminal/PromptBar";
 import { themes } from "./terminal/constants";
+
+// Files...
 import Resume from "./docs/Shubham_Resume.pdf";
+import Ubuntu from "./images/ubuntu.jpg"
+import Kali from "./images/kali.jpg"
+import Arch from "./images/arch.webp"
 
 import info from "./info.json";
 const options = info.options.map((option) => option.label);
 
 const CliHome = () => {
 
-  // TODO:  Implement history...
+  const navigate = useNavigate();
+
   const [logHistory, setLogHistory] = useState([]);
+  const [historyPos, setHistoryPos] = useState(0);
   const [currentTheme, setTheme] = useState(themes[0]);
   const [customUserName, setCustomUserName] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -36,6 +44,7 @@ const CliHome = () => {
 
   // Execute commands...
   const executeCommand = (command) => {
+    if (!command) return;
     // If the command is not setname then extract only 1st word [command] else all the command line text...
     if (!command.trim().startsWith("setname")) {
       command = command.split(" ")[0];
@@ -44,14 +53,10 @@ const CliHome = () => {
     }
 
     command = command.trim().toLowerCase();
-
-    if (command === "bug") {
-      // alert("Bhaggg bsdka \n:-{\n:-{\n:-{\n:-{\n:-{\n:-{");
-      console.log(history);
-    }
+    const commands = userInput.trim().split(" ");
 
     // If command exists in options //! [to show my data commands]...
-    if (options.includes(command)) {
+    if (options.includes(command) && ((commands.includes("resume") && commands.includes("-d")) || (commands.includes("resume") && commands.length===1 ) || commands.length === 1)) {
       let output = info?.options?.find(
         (option) => option?.label === command
       )?.value;
@@ -74,14 +79,32 @@ const CliHome = () => {
       }
 
       if (command === "resume") {
-        window.open(Resume);
+        if (commands[0] === "resume" && commands.length === 1) {
+          window.open(Resume);
+          setHistory((history) => [
+            ...history,
+            {
+              command: userInput,
+              output: "Thanks for viewing my resume",
+            },
+          ]);
+          return;
+        }
+        if (commands[1] === "-d" && commands.length === 2) {
+          const link = document.createElement('a');
+          link.href = Resume;
+          link.download = 'Shubham_resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
       }
 
       // Set data according to commad...
       setHistory((history) => [
         ...history,
         {
-          command,
+          command: userInput,
           output,
         },
       ]);
@@ -121,8 +144,21 @@ const CliHome = () => {
       }
 
       // If clear command then clear the terminal...
-      if (command === "clear") {
+      if (command === "clear" || command === "cls") {
         setHistory([]);
+        return;
+      }
+
+      // If history command then show the history...
+      if (command === "history") {
+        const hist = logHistory.map((ele, idx) => {
+          return ele !== "," && `<span>${idx + 1}. ${ele}</span><br/>`
+        }).join(" ");
+
+        setHistory((history) => [
+          ...history,
+          { command, output: hist },
+        ]);
         return;
       }
 
@@ -137,13 +173,12 @@ const CliHome = () => {
       }
 
       if (command.trim().startsWith("theme")) {
-        const commands = userInput.trim().split(" ");
-
         // If command is less than or equal to 1 & comand is them & show the theme list & command set commands...
         if (commands.length <= 1 && command === commands[0]) {
           const data = `
             - run 'theme list' to list themes<br />
-            - run 'theme set [<i>theme_name<i>]' to set theme
+            - run 'theme set [<i>theme_name<i>]' to set theme<br />
+            - run 'theme reset' to reset the theme
           `;
           setHistory((history) => [
             ...history,
@@ -187,6 +222,18 @@ const CliHome = () => {
           return;
         }
 
+        if (commands.length >= 2 && commands[1] === "reset") {
+          setTheme(commands[1]);
+          setHistory((history) => [
+            ...history,
+            {
+              command: showCommand,
+              output: `Theme restored`,
+            },
+          ]);
+          return;
+        }
+
         setHistory((history) => [
           ...history,
           {
@@ -195,6 +242,19 @@ const CliHome = () => {
           },
         ]);
 
+        return;
+      }
+
+      //  If user presses only enter in the terminal black command...
+      if (command === "exit") {
+        navigate("/")
+        setHistory((history) => [
+          ...history,
+          {
+            command: command,
+            output: "",
+          },
+        ]);
         return;
       }
 
@@ -212,24 +272,24 @@ const CliHome = () => {
     setUserInput("");
     executeCommand(userInput);
 
-    // TODO:  Implement history...
-    setLogHistory([...logHistory, userInput])
+    // Record History of commands...
+    setLogHistory([...logHistory, userInput]);
+    setHistoryPos(historyPos + 1);
 
-    setTimeout(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-    });
+    const appHomeId = document.getElementById("home");
+    console.log(appHomeId.scrollHeight);
+    window.scrollTo({ top: appHomeId.scrollHeight, behavior: "smooth" })
   };
 
+  // On Pressing arrowUpDown...
   const handleArrowKeyPress = ({ key }) => {
-    let lastIndex = history.length - 1;
-    console.log(history[lastIndex])
-    if (key === "ArrowUp") {
-      setUserInput(history[lastIndex].command);
-      lastIndex--;
+    if (key === "ArrowUp" && historyPos > 0) {
+      setUserInput(logHistory[historyPos - 1]);
+      setHistoryPos(historyPos - 1);
     }
-    if (key === "ArrowDown") {
-      setUserInput(history[lastIndex+1].command);
-      lastIndex++;
+    if (key === "ArrowDown" && (historyPos < logHistory.length - 1)) {
+      setUserInput(logHistory[historyPos + 1]);
+      setHistoryPos(historyPos + 1);
     }
   }
 
@@ -249,14 +309,34 @@ const CliHome = () => {
     // eslint-disable-next-line
   }, []);
 
+
+  // Set theme...
+  useEffect(() => {
+    if (["reset", "ubuntu"].includes(currentTheme)) {
+      const appHomeId = document.getElementById("home");
+      appHomeId.style.backgroundImage = `url(${Ubuntu})`
+      appHomeId.style.color = `white`
+    }
+    if (currentTheme === "kali") {
+      const appHomeId = document.getElementById("home");
+      appHomeId.style.backgroundImage = `url(${Kali})`
+      appHomeId.style.color = `white`
+    }
+    if (currentTheme === "arch") {
+      const appHomeId = document.getElementById("home");
+      appHomeId.style.backgroundImage = `url(${Arch})`
+      appHomeId.style.color = `gold`
+    }
+  }, [currentTheme]);
+
   return (
-    <div className={`${currentTheme} h-full`}>
-      <div className="font-bold text-xl p-2 w-[100vw] min-h-[100vh] bg-bgcol">
+    <div className={`${currentTheme === "arch" ? "pt-4" : ""} h-full`}>
+      <div className="font-bold p-2 w-[100vw] min-h-[100vh]">
         {
           /* History */
           history &&
           history?.map((history, idx) => (
-            <div key={idx} className="mb-2 text-command">
+            <div key={idx} className="mb-2">
               {/* Show prompt button by default... */}
               <PromptBar customUserName={customUserName} />
               <span>{history.command}</span> <br />
@@ -274,7 +354,7 @@ const CliHome = () => {
             <form onSubmit={handleSubmit} className="mt-2 sm:mt-0">
               <input
                 type="text"
-                className="w-full md:w-[450px] lg:w-[700px] bg-transparent outline-none text-command"
+                className="w-full md:w-[450px] lg:w-[700px] bg-transparent outline-none"
                 autoFocus
                 value={userInput}
                 onChange={handleInputChange}

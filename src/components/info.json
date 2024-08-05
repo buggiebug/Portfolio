@@ -19,6 +19,10 @@
     {
       "label": "theme",
       "about": "To customize theme"
+    },
+    {
+      "label": "exit",
+      "about": "Exit from terminal"
     }
   ],
   "options": [
@@ -80,7 +84,7 @@
     },
     {
       "label": "resume",
-      "about": "To download the resume",
+      "about": "To view the resume add [ -d ] to download the resume",
       "value": "Thanks for downloading my resume :-}"
     }
   ]
