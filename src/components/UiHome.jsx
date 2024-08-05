@@ -1,8 +1,13 @@
 import React from 'react'
+import Sidebar from './client/Sidebar'
 
 const UiHome = () => {
   return (
-    <div>UiHome</div>
+    <>
+      <div className='h-[100%] my-[15px] mx-[12px] '>
+        <Sidebar />
+      </div>
+    </>
   )
 }
 

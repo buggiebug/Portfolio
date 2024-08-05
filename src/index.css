@@ -9,10 +9,53 @@
   box-sizing: border-box;
 }
 
-body{
+:root {
+  --orange-yellow-crayola: hsl(45, 100%, 72%);
+  --onyx: hsl(240, 1%, 17%);
+
+
+
+  --bg-gradient-onyx: linear-gradient(to bottom right,
+      hsl(240, 1%, 25%) 3%,
+      hsl(0, 0%, 19%) 97%);
+  --bg-gradient-yellow-1: linear-gradient(to bottom right,
+      hsl(45, 100%, 71%) 0%,
+      hsla(36, 100%, 69%, 0) 50%);
+
+
+  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
+  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
+  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
+  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+}
+
+body {
   background-color: black;
   overflow: hidden;
 }
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--onyx);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-yellow-crayola);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-button {
+  width: 20px;
+}
+
+
 
 /* Home Page... */
 #home {
@@ -161,3 +204,34 @@ body{
 }
 
 
+/* UI Styless */
+
+.bgColor {
+  background-color: #1e1e1f;
+}
+
+.textColor {
+  width: fit-content;
+  border: 1px solid;
+  border-radius: 0 15px;
+  border-radius: 0 15px;
+  font-size: 13px;
+  color: var(--orange-yellow-crayola);
+  background: var(--border-gradient-onyx);
+  padding: 10px;
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-1);
+  z-index: 1;
+}
+
+.textColor::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.textColor:hover {
+  background: var(--bg-gradient-yellow-1);
+}

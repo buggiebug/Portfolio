@@ -13,10 +13,11 @@ import Arch from "./images/arch.webp"
 import info from "./utils/info.json";
 const options = info.options.map((option) => option.label);
 
-const CliHome = () => {
+const CliHome = ({ appRef }) => {
 
   const navigate = useNavigate();
 
+  const [scrollState, setScrollState] = useState(false);
   const [logHistory, setLogHistory] = useState([]);
   const [historyPos, setHistoryPos] = useState(0);
   const [currentTheme, setTheme] = useState(themes[0]);
@@ -39,7 +40,7 @@ const CliHome = () => {
 
   // Set User Input...
   const handleInputChange = (e) => {
-    setUserInput(e.target.value);
+    setUserInput(String(e.target.value).toLowerCase());
   };
 
   // Execute commands...
@@ -56,7 +57,7 @@ const CliHome = () => {
     const commands = userInput.trim().split(" ");
 
     // If command exists in options //! [to show my data commands]...
-    if (options.includes(command) && ((commands.includes("resume") && commands.includes("-d")) || (commands.includes("resume") && commands.length===1 ) || commands.length === 1)) {
+    if (options.includes(command) && ((commands.includes("resume") && commands.includes("-d")) || (commands.includes("resume") && commands.length === 1) || commands.length === 1)) {
       let output = info?.options?.find(
         (option) => option?.label === command
       )?.value;
@@ -276,9 +277,8 @@ const CliHome = () => {
     setLogHistory([...logHistory, userInput]);
     setHistoryPos(historyPos + 1);
 
-    const appHomeId = document.getElementById("home");
-    console.log(appHomeId.scrollHeight);
-    window.scrollTo({ top: appHomeId.scrollHeight, behavior: "smooth" })
+    // To scroll the screen...
+    setScrollState(!scrollState);
   };
 
   // On Pressing arrowUpDown...
@@ -328,6 +328,15 @@ const CliHome = () => {
       appHomeId.style.color = `gold`;
     }
   }, [currentTheme]);
+
+
+  // Scroll to bottom of command lines...
+  useEffect(() => {
+    const appHomeId = document.getElementById("home");
+    if (appRef.current) {
+      appHomeId.scrollTo({ top: appRef.current.scrollHeight, behavior: "smooth" })
+    }
+  }, [appRef, scrollState]);
 
   return (
     <div className={`${currentTheme === "arch" ? "pt-4" : ""} h-full`}>
