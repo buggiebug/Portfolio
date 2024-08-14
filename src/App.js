@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/ui" element={<UiHome />} />
+          <Route path="/ui" element={<UiHome appRef={appRef} />} />
           <Route path="/cli" element={<CliHome appRef={appRef} />} />
         </Routes>
       </BrowserRouter>

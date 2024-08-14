@@ -1,3 +1,6 @@
 node_modules
 build
 .env
+
+server/node_modules
+server/.env

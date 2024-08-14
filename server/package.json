@@ -1,0 +1,22 @@
+{
+  "name": "index.js",
+  "version": "1.0.0",
+  "description": "This is to fetch data from the external apis for blog section",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shubham Mishra",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "needle": "^3.3.1",
+    "twitter-api-sdk": "^1.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
