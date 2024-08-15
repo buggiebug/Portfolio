@@ -97,7 +97,7 @@ const Portfolio = () => {
                             onChange={handleActive}
                             value={activeButton}
                         >
-                            <option className="select-value" value="">
+                            <option className="select-value" value="Select category">
                                 Select category
                             </option>
                             <option className="select-item" value="Web development">

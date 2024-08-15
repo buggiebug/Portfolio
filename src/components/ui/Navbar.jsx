@@ -5,7 +5,7 @@ const Navbar = ({ appRef }) => {
     const handleScroll = () => {
         const appHomeId = document.getElementById("home");
         if (appRef.current) {
-            appHomeId.scrollTo({ top: 0, behavior: "smooth" })
+            appHomeId.scrollTo({ top: 0, behavior: "instant" })
         }
     }
 
@@ -14,7 +14,7 @@ const Navbar = ({ appRef }) => {
             <nav className="navbar">
                 <ul className="navbar-list">
                     <li className="navbar-item">
-                        <button onClick={handleScroll} className="navbar-link  active" data-nav-link>
+                        <button onClick={handleScroll} className="navbar-link active" data-nav-link>
                             About
                         </button>
                     </li>

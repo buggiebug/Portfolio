@@ -180,26 +180,26 @@ const EduAndExp = ({ appRef }) => {
                     <ol className="timeline-list">
                         <li className="timeline-item">
                             <h4 className="h4 timeline-item-title">
-                                IIMT College of Engineering
+                                B.Tech (CSE)
                             </h4>
-                            <span>AKTU - 2023</span>
-                            <p className="timeline-text">Computer Science & Engineering</p>
+                            <span>2023</span>
+                            <p className="timeline-text">IIMT College of Engineering</p>
                         </li>
 
                         <li className="timeline-item">
                             <h4 className="h4 timeline-item-title">
-                                Intermediate (MDIC)
+                                Intermediate
                             </h4>
                             <span>U.P Board - 2018</span>
-                            <p className="timeline-text">PCM</p>
+                            <p className="timeline-text">M.D.I.C</p>
                         </li>
 
                         <li className="timeline-item">
                             <h4 className="h4 timeline-item-title">
-                                High School (JPS)
+                                High School
                             </h4>
                             <span>CBSE Board- 2015</span>
-                            <p className="timeline-text">Science</p>
+                            <p className="timeline-text">J.P.S</p>
                         </li>
                     </ol>
                 </section>
@@ -233,7 +233,7 @@ const EduAndExp = ({ appRef }) => {
                                 ref={(el) => (skillRefs.current[index] = el)}
                                 data-id={index}
                             >
-                                <div className="title-wrapper">
+                                <div className="title-wrapper flex justify-between">
                                     <h5 className="h5">{skill.name}</h5>
                                     <data value={skill.value}>{skill.value}%</data>
                                 </div>

@@ -39,7 +39,7 @@ const UiHome = ({ appRef }) => {
 
   return (
     <>
-      <div className='mainContainer my-[15px] mx-[12px] mb-20'>
+      <div className='mainContainer my-[15px] mx-[12px] mb-36 md:mb-10'>
         <main>
 
           {/* - #SIDEBAR */}
