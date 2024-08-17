@@ -1,25 +1,27 @@
 import skillsData from "./skills";
 
-const calculateDate = (startYear, startMonth, endYear, endMonth) => {
+const calculateDate = (startYear, startMonth, startDay, endYear, endMonth, endDay) => {
   // Define the start and end dates
-  const startDate = new Date(startYear, startMonth);
-  let endDate
-  if (endYear && endMonth) {
-    endDate = new Date(endYear, endMonth);
+  const startDate = new Date(startYear, startMonth - 1, startDay); // Adjust for 0-indexed months
+  let endDate;
+  if (endYear && endMonth && endDay) {
+    endDate = new Date(endYear, endMonth - 1, endDay); // Adjust for 0-indexed months
   } else {
     endDate = new Date();
   }
   // Calculate the difference in total months
   const totalMonthsDifference = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
+
   // Calculate the number of years and remaining months
   const years = Math.floor(totalMonthsDifference / 12);
   const months = totalMonthsDifference % 12;
+
   // Output the result
   if (!years) {
-    return `${months} month(s).`
+    return `${months} month(s)`;
   }
-  return `${years} year(s) and ${months} month(s).`
-}
+  return `${years} year(s) and ${months} month(s)`;
+};
 
 const skills = Object.values(skillsData).map((skl) => { return skl.data }).flat().map((skl) => skl.name)
 const lastSkill = skills[skills.length - 1];
@@ -75,21 +77,21 @@ const info = {
           "position": "Software Engineer",
           "exp": "Oct, 2023 - Present",
           "link": "https://www.plutos.one",
-          "diff": calculateDate(2023, 9)
+          "diff": calculateDate(2023, 9, 12)
         },
         {
           "company": "Acxiom Consulting Pvt. Ltd.",
           "position": "Technical Consultant",
           "exp": "April, 2023 – Oct, 2023",
           "link": "https://acxiomconsulting.com",
-          "diff": calculateDate(2023, 3, 2023, 9)
+          "diff": calculateDate(2023, 3, 18, 2023, 9, 10)
         },
         {
           "company": "Dodev Technology Pvt. Ltd.",
           "position": "Web Developer (Intern)",
           "exp": "Aug, 2022 - Oct, 2022",
           "link": "https://www.dodev.in",
-          "diff": calculateDate(2022, 6, 2022, 9)
+          "diff": calculateDate(2022, 7, 1, 2022, 10, 30)
         }
       ]
     },
