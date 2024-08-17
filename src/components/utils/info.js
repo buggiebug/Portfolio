@@ -1,4 +1,33 @@
-{
+import skillsData from "./skills";
+
+const calculateDate = (startYear, startMonth, endYear, endMonth) => {
+  // Define the start and end dates
+  const startDate = new Date(startYear, startMonth);
+  let endDate
+  if (endYear && endMonth) {
+    endDate = new Date(endYear, endMonth);
+  } else {
+    endDate = new Date();
+  }
+  // Calculate the difference in total months
+  const totalMonthsDifference = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
+  // Calculate the number of years and remaining months
+  const years = Math.floor(totalMonthsDifference / 12);
+  const months = totalMonthsDifference % 12;
+  // Output the result
+  if (!years) {
+    return `${months} month(s).`
+  }
+  return `${years} year(s) and ${months} month(s).`
+}
+
+const skills = Object.values(skillsData).map((skl) => { return skl.data }).flat().map((skl) => skl.name)
+const lastSkill = skills[skills.length - 1];
+const allSkill = skills.slice(0, skills.length - 1);
+const skill = allSkill.join(", ") + " & " + lastSkill;
+
+
+const info = {
   "additional_commands": [
     {
       "label": "help",
@@ -29,12 +58,12 @@
     {
       "label": "about",
       "about": "To know about me",
-      "value": "Hey there! I'm Shubham Mishra, a software engineer with a passion for crafting innovative digital solutions."
+      "value": "I am a Software Engineer based in Noida, India, currently working at PlutosOne. My expertise lies in developing Web Applications and Cross-Platform Applications that are both functional and user-centric, with a focus on delivering intuitive and aesthetically pleasing solutions. <br/>I am passionate about simplifying complex challenges through innovative design and technology, ensuring that the end product not only meets user needs but also enhances their experience."
     },
     {
       "label": "skills",
       "about": "To know about my skills",
-      "value": "I'm a versatile full-stack developer, adept at turning ideas into robust web applications. <br /> <br /> Proficient in HTML5, CSS3, JavaScript, Next.js, React.js, Tailwind CSS, Bootstrap, Node.js, Express.js, SQL, MongoDB, Redis, Redux, Context API, Docker, Jenkins, Slack, GitHub, and Git."
+      "value": `I'm a versatile full-stack developer, adept at turning ideas into robust applications. <br /> <br /> Proficient in: ${skill}`
     },
     {
       "label": "experience",
@@ -42,16 +71,25 @@
       "value": "I have gained experience working in various roles over the years.",
       "data": [
         {
-          "label": "PlutosOne Pvt. Ltd.",
-          "value": "Software Engineer <br /> Oct 2023 - Present"
+          "company": "PlutosOne Pvt. Ltd.",
+          "position": "Software Engineer",
+          "exp": "Oct, 2023 - Present",
+          "link": "https://www.plutos.one",
+          "diff": calculateDate(2023, 9)
         },
         {
-          "label": "Acxiom Consulting Pvt. Ltd.",
-          "value": "Technical Consultant <br /> April 2023 – Sep 2023"
+          "company": "Acxiom Consulting Pvt. Ltd.",
+          "position": "Technical Consultant",
+          "exp": "April, 2023 – Oct, 2023",
+          "link": "https://acxiomconsulting.com",
+          "diff": calculateDate(2023, 3, 2023, 9)
         },
         {
-          "label": "Dodev Technology Pvt. Ltd.",
-          "value": "Full Stack Developer (Intern) <br /> July 2022 - Sep 2022"
+          "company": "Dodev Technology Pvt. Ltd.",
+          "position": "Web Developer (Intern)",
+          "exp": "Aug, 2022 - Oct, 2022",
+          "link": "https://www.dodev.in",
+          "diff": calculateDate(2022, 6, 2022, 9)
         }
       ]
     },
@@ -89,3 +127,5 @@
     }
   ]
 }
+
+export default info;

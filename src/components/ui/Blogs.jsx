@@ -42,6 +42,7 @@ const Blogs = () => {
                             </Link>
                         </li>
 
+                        {/* <iframe src='https://app.daily.dev/buggie' about='Daily Dev' title='Daily'></iframe> */}
                     </ul>
                 </section>
             </article>

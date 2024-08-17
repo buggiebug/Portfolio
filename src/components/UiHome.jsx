@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import "./ui/style.scss";
 import About from './ui/About';
 import Blogs from './ui/Blogs';
@@ -8,7 +8,18 @@ import Contact from './ui/Contact';
 import SideNavbar from './ui/SideNavbar';
 import Navbar from './ui/Navbar';
 
+import infoData from "./utils/info";
+
 const UiHome = ({ appRef }) => {
+
+  const { experience, about } = useMemo(() => {
+    const experience = infoData.options.filter(option => option.label === "experience")[0].data;
+    const about = infoData.options.filter(option => option.label === "about")[0].value.split("<br/>");
+    return {
+      experience,
+      about
+    }
+  }, []);
 
   useEffect(() => {
 
@@ -18,7 +29,7 @@ const UiHome = ({ appRef }) => {
     navigationLinks.forEach((link) => {
       link.addEventListener("click", () => {
         pages.forEach((page) => {
-          if (link.innerHTML.toLowerCase() === page.dataset.page) {
+          if (link.innerText.toLowerCase() === page.dataset.page) {
             page.classList.add("active");
             navigationLinks.forEach((nav) => nav.classList.remove("active"));
             link.classList.add("active");
@@ -53,10 +64,10 @@ const UiHome = ({ appRef }) => {
             <Navbar appRef={appRef} />
 
             {/* - #ABOUT */}
-            <About />
+            <About about={about} />
 
             {/* - #RESUME */}
-            <EduAndExp appRef={appRef} />
+            <EduAndExp experience={experience} />
 
             {/* - #PORTFOLIO */}
             <Portfolio />

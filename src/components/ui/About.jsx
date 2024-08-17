@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 // import Testimonials from './Testimonials'
 
-const About = () => {
+const About = ({ about }) => {
   return (
     <>
       <article className="about  active" data-page="about">
@@ -12,10 +12,7 @@ const About = () => {
 
         {/* Self Intro */}
         <section className="about-text">
-          <p>
-            I am a Software Engineer based in Noida, India, currently working at PlutosOne. My expertise lies in developing Web Applications and Cross-Platform Applications that are both functional and user-centric, with a focus on delivering intuitive and aesthetically pleasing solutions.</p>
-
-          <p>I am passionate about simplifying complex challenges through innovative design and technology, ensuring that the end product not only meets user needs but also enhances their experience.          </p>
+          {about?.map((ele,idx) => <p key={idx}>{ele}</p>)}
         </section>
 
         {/* - Service */}

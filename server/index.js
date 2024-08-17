@@ -4,38 +4,37 @@ const app = express();
 const { HOST, PORT } = process.env;
 
 const { TWITTER_API_KEY, TWITTER_API_KEY_SECRET, TWITTER_CLIENT_ID, TWITTER_CLIENT_SECRET, TWITTER_BEARER_TOKEN, TWITTER_ACCESS_TOKEN, TWITTER_TOKEN_SECRET } = process.env;
-const { Client } = require("twitter-api-sdk");
+const { TwitterApi } = require("twitter-api-v2");
 
-(async function fetchTwits() {
+const twitterClient = new TwitterApi({
+    appKey: TWITTER_API_KEY,
+    appSecret: TWITTER_API_KEY_SECRET,
+    clientId: TWITTER_CLIENT_ID,
+    clientSecret: TWITTER_CLIENT_SECRET,
+    accessToken: TWITTER_ACCESS_TOKEN,
+    accessSecret: TWITTER_TOKEN_SECRET
+});
+
+app.get("/", async (req, res) => {
     try {
-        const client = new Client(TWITTER_BEARER_TOKEN);
-
-        // const response = await client.tweets.usersIdTweets();
-        // console.log("response", JSON.stringify(response, null, 2));
-
-        // const response = await client.users.findMyUser({ "user.fields": ["name"] })
-        // console.log("response", JSON.stringify(response, null, 2));
-
-        // Test with a basic endpoint
-        const response = await client.users.findUserByUsername("yehBuggie");
-        console.log("response", JSON.stringify(response, null, 2));
-
+        const readOnlyClient = twitterClient.readOnly;
+        const user = await readOnlyClient.currentUserV2();
+        console.log(user);
+        const response = await readOnlyClient.v2.usersByUsernames("yehBuggie");
+        return res.json(response);
     } catch (error) {
-        console.log(error?.error || error?.message)
+        return res.status(error.code).json({ error });
     }
-}())
+});
 
-
-// function get(str) {
-//     const length = str.length;
-//     const idx = str.indexOf("i") !== -1 ? str.indexOf("i") : str.length;
-//     console.log(idx, length);
-
-//     return (str.slice(0, idx).split("").reverse().join("") + str.slice(idx + 1))
-// }
-// console.log(get("string"));
-
-
+app.get("/me", async (req, res) => {
+    try {
+        const response = await twitterClient.currentUser()
+        return res.json(response);
+    } catch (error) {
+        return res.status(error.code).json({ error });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`server running on http://${HOST}:${PORT}`);

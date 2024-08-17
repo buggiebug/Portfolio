@@ -99,14 +99,6 @@
   #RESET
 \*-----------------------------------*/
 
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   a {
     text-decoration: none;
   }
@@ -479,6 +471,7 @@
     border-radius: 12px 12px 0 0;
     box-shadow: var(--shadow-2);
     z-index: 5;
+    min-width: 308px;
   }
 
   .navbar-list {

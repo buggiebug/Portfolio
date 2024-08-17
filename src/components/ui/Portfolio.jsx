@@ -40,11 +40,11 @@ const Portfolio = () => {
             link: "https://github.com/buggiebug/login-signup-page/"
         },
         {
-            title: "Task Manager",
+            title: "Expense Manager",
             category: "Applications",
             img: "./images/ui/projects/todo.jpg",
-            alt: "task manager",
-            link: "/"
+            alt: "Expense Manager",
+            link: "https://github.com/buggiebug/Expense-Tracker/"
         }
     ], []);
 

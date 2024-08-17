@@ -64,7 +64,7 @@ const SideNavbar = () => {
                             </div>
                         </li>
 
-                        <li className="contact-item">
+                        {/* <li className="contact-item">
                             <div className="icon-box">
                                 <ion-icon name="phone-portrait-outline"></ion-icon>
                             </div>
@@ -76,7 +76,7 @@ const SideNavbar = () => {
                                     +91 9120226043
                                 </a>
                             </div>
-                        </li>
+                        </li> */}
 
                         <li className="contact-item">
                             <div className="icon-box">
@@ -86,7 +86,7 @@ const SideNavbar = () => {
                             <div className="contact-info">
                                 <p className="contact-title">Location</p>
 
-                                <address>Noida, U.P, India</address>
+                                <address className='cursor-pointer' onClick={() => { window.open("https://maps.app.goo.gl/7XC6MwEtYRYU2Xfy7") }}>Noida, U.P, India</address>
                             </div>
                         </li>
                     </ul>

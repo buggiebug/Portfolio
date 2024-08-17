@@ -10,7 +10,7 @@ import Ubuntu from "./images/ubuntu.jpg"
 import Kali from "./images/kali.jpg"
 import Arch from "./images/arch.webp"
 
-import info from "./utils/info.json";
+import info from "./utils/info";
 const options = info.options.map((option) => option.label);
 
 const CliHome = ({ appRef }) => {
@@ -72,7 +72,14 @@ const CliHome = ({ appRef }) => {
           output += data?.map((item) => {
             return `<br /><br /> <strong><a class="underline" href="${item.url}" target="_blank" rel="noopener norefferer">${item.label}</a></strong> <br /> ${item.value}`;
           });
-        } else {
+        }
+        else if (command === "experience") {
+          output = `${output}<br/>` + data?.map((item) => {
+            return `<span title='${item.diff}'><br/><strong>${item.position}</strong><span class="text-sm"><br/><a href='${item.link}' target='_blank'>${item.company}</a><br/> ${item.exp}</span></span><br/>`;
+          });
+          output = output.split(",").join(" ")
+        }
+        else {
           output += data?.map((item) => {
             return `<br /><br /> <strong>${item.label}</strong> <br /> ${item.value}`;
           });
