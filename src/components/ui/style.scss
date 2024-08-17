@@ -95,6 +95,18 @@
 }
 
 .mainContainer {
+
+  @media (min-width: 320px) {
+    margin-bottom: 150px;
+  }
+
+  @media (min-width: 500px) {
+    margin-bottom: 200px;
+  }
+  @media (min-width: 1024px) {
+    margin-bottom: 10px;
+  }
+
   /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
