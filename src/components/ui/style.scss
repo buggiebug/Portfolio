@@ -103,9 +103,19 @@
   @media (min-width: 500px) {
     margin-bottom: 200px;
   }
+
   @media (min-width: 1024px) {
     margin-bottom: 10px;
   }
+
+  input:-webkit-autofill {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1e1e1f inset !important;
+    -webkit-text-fill-color: white !important;
+    border: 1px solid var(--jet);
+    border-radius: 14px;
+    outline: none;
+}
 
   /*-----------------------------------*\
   #RESET

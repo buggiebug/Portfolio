@@ -42,11 +42,11 @@ const Navbar = ({ appRef }) => {
                         </button>
                     </li>
 
-                    <li className="navbar-item">
+                    {/* <li className="navbar-item">
                         <button onClick={(e) => { handleClick(e) }} className="navbar-link" data-nav-link>
                             Blog
                         </button>
-                    </li>
+                    </li> */}
 
                     <li className="navbar-item">
                         <button onClick={(e) => { handleClick(e) }} className="navbar-link" data-nav-link>

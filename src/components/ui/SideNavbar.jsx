@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { SiDailydotdev } from "react-icons/si";
+import { BsMedium } from "react-icons/bs";
 
 const SideNavbar = () => {
 
@@ -105,6 +107,11 @@ const SideNavbar = () => {
                             </Link>
                         </li>
                         <li className="social-item">
+                            <Link to={"https://app.daily.dev/buggie"} className="social-link" target='_blank' title='Logo daily.dev'>
+                                <SiDailydotdev/>
+                            </Link>
+                        </li>
+                        <li className="social-item">
                             <Link to={"https://x.com/yehBuggie"} className="social-link" target='_blank'>
                                 <ion-icon name="logo-twitter"></ion-icon>
                             </Link>
@@ -119,6 +126,11 @@ const SideNavbar = () => {
                                 <ion-icon name="logo-facebook"></ion-icon>
                             </Link>
                         </li>
+                        <li className="social-item">
+                            <Link to={"https://medium.com/@buggie9120"} className="social-link" target='_blank' title='Logo Medium'>
+                                <BsMedium/>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </aside>
@@ -126,4 +138,4 @@ const SideNavbar = () => {
     )
 }
 
-export default SideNavbar
+export default SideNavbar;
