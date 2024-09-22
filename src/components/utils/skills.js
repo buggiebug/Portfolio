@@ -20,8 +20,9 @@ const skills = {
         data: [
             { name: "Javascript", value: "90", img: <SiJavascript /> },
             { name: "Typescript", value: "80", img: <SiTypescript /> },
-            { name: "Core Java", value: "60", img: <RiJavaLine /> },
-            { name: "C++", value: "60", img: <PiFileCppBold /> },
+            { name: "HTML5", value: "90", img: <ion-icon name="logo-html5"></ion-icon> },
+            { name: "Java", value: "50", img: <RiJavaLine /> },
+            { name: "C++", value: "50", img: <PiFileCppBold /> },
             { name: "Dart", value: "40", img: <SiDart /> },
         ],
         icon: <RiCodeSSlashFill />
@@ -32,7 +33,6 @@ const skills = {
         data: [
             { name: "React Js", value: "90", img: <ion-icon name="logo-react"></ion-icon> },
             { name: "Next Js", value: "90", img: <RiNextjsFill /> },
-            { name: "HTML5", value: "90", img: <ion-icon name="logo-html5"></ion-icon> },
             { name: "CSS3", value: "80", img: <ion-icon name="logo-css3"></ion-icon> },
             { name: "Tailwind CSS", value: "80", img: <ion-icon name="logo-css3"></ion-icon> },
             { name: "Bootstrap", value: "75", img: <FaBootstrap /> },

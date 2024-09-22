@@ -77,21 +77,21 @@ const info = {
           "position": "Software Engineer",
           "exp": "Oct, 2023 - Present",
           "link": "https://www.plutos.one",
-          "diff": calculateDate(2023, 9, 12)
+          "diff": calculateDate(2023, 10, 12)
         },
         {
           "company": "Acxiom Consulting Pvt. Ltd.",
           "position": "Technical Consultant",
-          "exp": "April, 2023 – Oct, 2023",
+          "exp": "April, 2023 – Sep, 2023",
           "link": "https://acxiomconsulting.com",
-          "diff": calculateDate(2023, 3, 18, 2023, 9, 10)
+          "diff": calculateDate(2023, 4, 18, 2023, 10, 9)
         },
         {
           "company": "Dodev Technology Pvt. Ltd.",
           "position": "Web Developer (Intern)",
-          "exp": "Aug, 2022 - Oct, 2022",
+          "exp": "July, 2022 - Oct, 2022",
           "link": "https://www.dodev.in",
-          "diff": calculateDate(2022, 7, 1, 2022, 10, 30)
+          "diff": calculateDate(2022, 7, 4, 2022, 10, 7)
         }
       ]
     },

@@ -1,0 +1,26 @@
+.topLight {
+    img {
+        width: 100%;
+        /* Full width by default */
+        max-width: 100%;
+        /* Ensure it doesn't exceed its container */
+        height: auto;
+        /* Maintain aspect ratio */
+    }
+
+    /* Desktop-specific styles */
+    @media (min-width: 768px) {
+        img {
+            max-width: 1600px;
+            /* Maximum width for larger screens */
+        }
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 767px) {
+        img {
+            max-width: 600px;
+            /* Maximum width for smaller screens */
+        }
+    }
+}

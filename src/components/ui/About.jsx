@@ -12,7 +12,7 @@ const About = ({ about }) => {
 
         {/* Self Intro */}
         <section className="about-text">
-          {about?.map((ele,idx) => <p key={idx}>{ele}</p>)}
+          {about?.map((ele, idx) => <p key={idx}>{ele}</p>)}
         </section>
 
         {/* - Service */}
@@ -90,8 +90,10 @@ const About = ({ about }) => {
               </Link>
             </li>
 
-            <li className="clients-item">
-              <Link to={"https://dodev.in"} target='_blank'>
+            <li className="clients-item flex justify-center">
+              <Link to={"https://dodev.in"} target='_blank'
+                style={{ width: "40%" }}
+              >
                 <img
                   src="./images/ui/workedIn/dodev.png"
                   alt="Dodev Pvt. Ltd."

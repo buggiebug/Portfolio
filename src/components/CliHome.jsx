@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PromptBar from "./utils/PromptBar";
@@ -9,11 +9,13 @@ import Resume from "./docs/Shubham_Resume.pdf";
 import Ubuntu from "./images/ubuntu.jpg"
 import Kali from "./images/kali.jpg"
 import Arch from "./images/arch.webp"
+import Loader from "./images/loader.gif"
+
 
 import info from "./utils/info";
 const options = info.options.map((option) => option.label);
 
-const CliHome = ({ appRef }) => {
+const Cli = ({ appRef }) => {
 
   const navigate = useNavigate();
 
@@ -162,10 +164,10 @@ const CliHome = ({ appRef }) => {
         const hist = logHistory.map((ele, idx) => {
           return ele !== "," && `<span>${idx + 1}. ${ele}</span><br/>`
         }).join(" ");
-
+        const showHistory = `<br/><span>Id CommandLine</span><br/><span>-- -----------</span><br/>${hist}`
         setHistory((history) => [
           ...history,
-          { command, output: hist },
+          { command, output: showHistory },
         ]);
         return;
       }
@@ -319,21 +321,26 @@ const CliHome = ({ appRef }) => {
 
   // Set theme...
   useEffect(() => {
-    if (["reset", "ubuntu"].includes(currentTheme)) {
-      const appHomeId = document.getElementById("home");
-      appHomeId.style.backgroundImage = `url(${Ubuntu})`;
-      appHomeId.style.color = `white`;
+    const loadTheme = () => {
+      if (["reset", "ubuntu"].includes(currentTheme)) {
+        const appHomeId = document.getElementById("home");
+        appHomeId.style.backgroundImage = `url(${Ubuntu})`;
+        appHomeId.style.color = `white`;
+      }
+      if (currentTheme === "kali") {
+        const appHomeId = document.getElementById("home");
+        appHomeId.style.backgroundImage = `url(${Kali})`;
+        appHomeId.style.color = `white`;
+      }
+      if (currentTheme === "arch") {
+        const appHomeId = document.getElementById("home");
+        appHomeId.style.backgroundImage = `url(${Arch})`;
+        appHomeId.style.color = `gold`;
+      }
     }
-    if (currentTheme === "kali") {
-      const appHomeId = document.getElementById("home");
-      appHomeId.style.backgroundImage = `url(${Kali})`;
-      appHomeId.style.color = `white`;
-    }
-    if (currentTheme === "arch") {
-      const appHomeId = document.getElementById("home");
-      appHomeId.style.backgroundImage = `url(${Arch})`;
-      appHomeId.style.color = `gold`;
-    }
+    loadTheme()
+    window.addEventListener("load", loadTheme);
+    return () => window.removeEventListener("load", loadTheme);
   }, [currentTheme]);
 
 
@@ -386,4 +393,46 @@ const CliHome = ({ appRef }) => {
   );
 };
 
-export default CliHome;
+
+const LoadingComponent = () => {
+  const message = useMemo(() => { return ["Loading shell environment...", "Checking system configurations...", "Installing dependencies...", "Terminal ready."] }, [])
+  const [data, setData] = useState([]);
+  const [index, setIndex] = useState(0)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setData((prev) => [...prev, message[index]]);
+      setIndex(index + 1);
+    }, 1000);
+    return () => clearInterval(timer)
+  }, [message, index])
+
+  return <>
+    <div className="w-full h-full flex flex-col justify-center items-center bg-[#00000096]">
+      <img src={Loader} alt="loader" className="absolute top-52" />
+      <div className="relative top-5 text-lime-600 font-mono">
+        {!data.length && <p>{message[0]}</p>}
+        {data.map((ele, idx) => {
+          return <p key={idx}>{ele}</p>
+        })}
+      </div>
+
+    </div>
+  </>
+}
+
+export default function CliHome({ appRef }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timer)
+  }, [])
+
+  return <>
+    {
+      loading ? <LoadingComponent /> : <Cli appRef={appRef} />
+    }
+  </>
+};
