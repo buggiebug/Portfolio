@@ -1,0 +1,54 @@
+[
+    {
+        "title": "Test Taker",
+        "desc": "Innovated and executed the development of a dynamic Test Taker WebApp providing an interactive platform for students to enhance their competitive exam preparation with immediate feedback.",
+        "category": "Web development",
+        "img": "./images/ui/projects/testaker.jpg",
+        "alt": "Test Taker",
+        "link": "https://testtaker.netlify.app/"
+    },
+    {
+        "title": "E-Commerce (Website) using sentiment analysis",
+        "desc": "Designed and developed a comprehensive e-commerce solution that empowers businesses with advanced sentiment analysis capabilities enhancing customer engagement and product rankings.",
+        "category": "Web development",
+        "img": "./images/ui/projects/darkstore.png",
+        "alt": "Dark Store",
+        "link": "https://dashboard-darkstore.netlify.app/"
+    },
+    {
+        "title": "Voice Notes",
+        "desc": "Pioneered the creation of a versatile web application allowing users to record voice notes or upload audio files for personal use. And ensured individual access control enabling users to manage their audio content with ease and privacy.",
+        "category": "Web development",
+        "img": "./images/ui/projects/voice-notes.png",
+        "alt": "Voice Notes",
+        "link": "https://shortmusic.netlify.app/"
+    },
+    {
+        "title": "Chat App",
+        "category": "Web Development",
+        "img": "./images/ui/projects/chatapp.png",
+        "alt": "Chat App",
+        "link": "https://github.com/buggiebug/chat-app/"
+    },
+    {
+        "title": "SCSPL",
+        "category": "Web design",
+        "img": "./images/ui/projects/scspl.png",
+        "alt": "SCSPL",
+        "link": "https://collaborative-circle-771792.framer.app/"
+    },
+    {
+        "title": "Login Signup",
+        "category": "Web development",
+        "img": "./images/ui/projects/loginSignup.png",
+        "alt": "Login Signup",
+        "link": "https://github.com/buggiebug/login-signup-page/"
+    },
+    {
+        "title": "Expense Manager",
+        "category": "Applications",
+        "img": "./images/ui/projects/expense_tracker.jpg",
+        "alt": "Expense Manager",
+        "link": "https://github.com/buggiebug/Expense-Tracker/"
+    }
+]

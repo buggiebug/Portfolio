@@ -1,52 +1,10 @@
 import React, { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Projects from "../utils/projects.json";
 
 const Portfolio = () => {
 
-    const projects = useMemo(() => [
-        {
-            title: "Dark Store",
-            category: "Web development",
-            img: "./images/ui/projects/darkstore.png",
-            alt: "Dark Store",
-            link: "https://dashboard-darkstore.netlify.app/"
-        },
-        {
-            title: "Voice Notes",
-            category: "Web development",
-            img: "./images/ui/projects/voice-notes.png",
-            alt: "Voice Notes",
-            link: "https://shortmusic.netlify.app/"
-        },
-        {
-            title: "Chat App",
-            category: "Web Development",
-            img: "./images/ui/projects/chatapp.png",
-            alt: "Chat App",
-            link: "https://github.com/buggiebug/chat-app/"
-        },
-        {
-            title: "SCSPL",
-            category: "Web design",
-            img: "./images/ui/projects/scspl.png",
-            alt: "SCSPL",
-            link: "https://collaborative-circle-771792.framer.app/"
-        },
-        {
-            title: "Login Signup",
-            category: "Web development",
-            img: "./images/ui/projects/loginSignup.png",
-            alt: "Login Signup",
-            link: "https://github.com/buggiebug/login-signup-page/"
-        },
-        {
-            title: "Expense Manager",
-            category: "Applications",
-            img: "./images/ui/projects/todo.jpg",
-            alt: "Expense Manager",
-            link: "https://github.com/buggiebug/Expense-Tracker/"
-        }
-    ], []);
+    const projects = useMemo(() => Projects, []);
 
     const [projState, setProjState] = useState(projects);
 

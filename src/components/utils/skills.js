@@ -5,7 +5,9 @@ import { TbGitMerge } from "react-icons/tb";
 import { SiRedux } from "react-icons/si";
 import { FaJenkins } from "react-icons/fa";
 import { PiFileCppBold } from "react-icons/pi";
+// eslint-disable-next-line
 import { RiFlutterFill, RiNextjsFill, RiJavaLine, RiCodeSSlashFill } from "react-icons/ri";
+// eslint-disable-next-line
 import { SiJavascript, SiTypescript, SiNestjs, SiDart } from "react-icons/si";
 import { FaDocker } from "react-icons/fa";
 import { FcAddDatabase } from "react-icons/fc";
@@ -19,13 +21,23 @@ const skills = {
     programmingLanguages: {
         data: [
             { name: "Javascript", value: "90", img: <SiJavascript /> },
-            { name: "Typescript", value: "80", img: <SiTypescript /> },
+            { name: "Typescript", value: "90", img: <SiTypescript /> },
             { name: "HTML5", value: "90", img: <ion-icon name="logo-html5"></ion-icon> },
-            { name: "Java", value: "50", img: <RiJavaLine /> },
+            // { name: "Java", value: "50", img: <RiJavaLine /> },
             { name: "C++", value: "50", img: <PiFileCppBold /> },
-            { name: "Dart", value: "40", img: <SiDart /> },
+            // { name: "Dart", value: "40", img: <SiDart /> },
         ],
         icon: <RiCodeSSlashFill />
+    },
+
+    // Backend Tools
+    backendTools: {
+        data: [
+            { name: "Node Js", value: "85", img: <ion-icon name="logo-nodejs"></ion-icon> },
+            { name: "Express Js", value: "85", img: <SiExpress /> },
+            { name: "Nest Js", value: "80", img: <SiNestjs /> },
+        ],
+        icon: <FaRegFileCode />
     },
 
     // Frontend Tools
@@ -37,20 +49,10 @@ const skills = {
             { name: "Tailwind CSS", value: "80", img: <ion-icon name="logo-css3"></ion-icon> },
             { name: "Bootstrap", value: "75", img: <FaBootstrap /> },
             { name: "Redux", value: "90", img: <SiRedux /> },
-            { name: "Context API", value: "80", img: <ion-icon name="cube-outline"></ion-icon> },
-            { name: "Flutter", value: "30", img: <RiFlutterFill /> },
+            { name: "Context API", value: "90", img: <ion-icon name="cube-outline"></ion-icon> },
+            // { name: "Flutter", value: "30", img: <RiFlutterFill /> },
         ],
         icon: <RiFlowerLine />
-    },
-
-    // Backend Tools
-    backendTools: {
-        data: [
-            { name: "Node Js", value: "85", img: <ion-icon name="logo-nodejs"></ion-icon> },
-            { name: "Express Js", value: "85", img: <SiExpress /> },
-            { name: "Nest Js", value: "75", img: <SiNestjs /> },
-        ],
-        icon: <FaRegFileCode />
     },
 
     // Databases

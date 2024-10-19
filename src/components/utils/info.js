@@ -1,26 +1,39 @@
 import skillsData from "./skills";
+import Projects from "./projects.json";
 
 const calculateDate = (startYear, startMonth, startDay, endYear, endMonth, endDay) => {
   // Define the start and end dates
   const startDate = new Date(startYear, startMonth - 1, startDay); // Adjust for 0-indexed months
   let endDate;
   if (endYear && endMonth && endDay) {
-    endDate = new Date(endYear, endMonth - 1, endDay); // Adjust for 0-indexed months
+      endDate = new Date(endYear, endMonth - 1, endDay); // Adjust for 0-indexed months
   } else {
-    endDate = new Date();
+      endDate = new Date();
   }
+
   // Calculate the difference in total months
-  const totalMonthsDifference = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth());
+  const totalYear = endDate.getFullYear() - startDate.getFullYear();
+  const totalMonth = endDate.getMonth() - startDate.getMonth();
+  const totalDay = endDate.getDate() - startDate.getDate();
+
+  const totalMonthsDifference = ( totalYear* 12 + totalMonth);
 
   // Calculate the number of years and remaining months
   const years = Math.floor(totalMonthsDifference / 12);
   const months = totalMonthsDifference % 12;
 
+  // Adjust the number of days correctly when borrowing months
+  let adjustedDays = totalDay;
+  if (totalDay < 0) {
+      const previousMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
+      adjustedDays = previousMonth.getDate() + totalDay; // Get remaining days from the previous month
+  }
+
   // Output the result
   if (!years) {
-    return `${months} month(s)`;
+      return `${months} month(s)`;
   }
-  return `${years} year(s) and ${months} month(s)`;
+  return `${years} year(s) and ${months} month(s) and ${adjustedDays} day(s)`;
 };
 
 const skills = Object.values(skillsData).map((skl) => { return skl.data }).flat().map((skl) => skl.name)
@@ -99,23 +112,7 @@ const info = {
       "label": "projects",
       "about": "To know about my projects",
       "value": "I've had the pleasure of working on diverse projects that showcase my skills and creativity.",
-      "data": [
-        {
-          "label": "Ecommerce (Website) Using Sentiment Analysis",
-          "value": "Designed and developed a comprehensive e-commerce solution that empowers businesses with advanced sentiment analysis capabilities enhancing customer engagement and product rankings.",
-          "url": "https://dashboard-darkstore.netlify.app"
-        },
-        {
-          "label": "Test Taker",
-          "value": "Innovated and executed the development of a dynamic Test Taker WebApp providing an interactive platform for students to enhance their competitive exam preparation with immediate feedback.",
-          "url": "https://testtaker.netlify.app/"
-        },
-        {
-          "label": "Voice Notes",
-          "value": "Pioneered the creation of a versatile web application allowing users to record voice notes or upload audio files for personal use. And ensured individual access control enabling users to manage their audio content with ease and privacy.",
-          "url": "https://shortmusic.netlify.app/"
-        }
-      ]
+      "data": Projects
     },
     {
       "label": "contact",

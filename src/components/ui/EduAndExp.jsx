@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import Resume from "../docs/Shubham_Resume.pdf";
 import { Link } from "react-router-dom";
 import skillsData from "../utils/skills";
-
+import { WiCloudDown } from "react-icons/wi";
 
 const EduAndExp = ({ experience }) => {
 
@@ -91,10 +91,10 @@ const EduAndExp = ({ experience }) => {
           <h2 className="h2 article-title">Experience</h2>
           <button
             onClick={downloadResume}
-            className={`h2 relative top-2 focus:text-yellow-900 ${widthState > 1023 && "left-[180px]"
+            className={`relative top-2 focus:text-yellow-900 ${widthState > 1023 && "left-[180px]"
               }`}
             title="Shubham's resume">
-            <ion-icon name="cloud-download-outline"></ion-icon>
+            <span className="text-[30px] hover:text-blue-400"><WiCloudDown/></span>
           </button>
         </header>
 

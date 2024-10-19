@@ -71,8 +71,8 @@ const Cli = ({ appRef }) => {
           info.options.find((option) => option.label === command).data ?? [];
 
         if (command === "projects") {
-          output += data?.map((item) => {
-            return `<br /><br /> <strong><a class="underline" href="${item.url}" target="_blank" rel="noopener norefferer">${item.label}</a></strong> <br /> ${item.value}`;
+          output += data?.map((item,idx) => {
+            return `<br /><br /><strong class="mr-2">${idx+1} .</strong/> <strong><a class="underline" href="${item.link}" target="_blank" rel="noopener norefferer">${item.title}</a></strong> ${item.desc ? `<br /> ${item.desc}`: ""}`;
           });
         }
         else if (command === "experience") {
