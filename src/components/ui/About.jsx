@@ -24,7 +24,7 @@ const About = ({ about }) => {
             <li className="service-item">
               <div className="service-icon-box">
                 <img
-                  src="./images/ui/images/icon-dev.svg"
+                  src="./images/ui/images/icon-web.svg"
                   alt="Web development icon"
                   width="40"
                 />
@@ -33,10 +33,10 @@ const About = ({ about }) => {
               <div className="service-content-box">
                 <h4 className="h4 service-item-title">Web development</h4>
 
-                <p className="service-item-text">
+                {/* <p className="service-item-text">
                   High-quality development of sites at the professional
                   level.
-                </p>
+                </p> */}
               </div>
             </li>
 
@@ -52,10 +52,29 @@ const About = ({ about }) => {
               <div className="service-content-box">
                 <h4 className="h4 service-item-title">Mobile apps</h4>
 
-                <p className="service-item-text">
+                {/* <p className="service-item-text">
                   Professional development of applications for iOS and
                   Android.
-                </p>
+                </p> */}
+              </div>
+            </li>
+
+            <li className="service-item">
+              <div className="service-icon-box">
+                <img
+                  src="./images/ui/images/icon-api.gif"
+                  alt="mobile app icon"
+                  width="40"
+                />
+              </div>
+
+              <div className="service-content-box">
+                <h4 className="h4 service-item-title">API's Development</h4>
+
+                {/* <p className="service-item-text">
+                  Professional development of applications for iOS and
+                  Android.
+                </p> */}
               </div>
             </li>
 
